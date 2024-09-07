@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TodoController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -9,6 +10,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post("/api/todo", [TodoController::class, "create"]);
 Route::get("/users/login", [UserController::class, "login"]);
 Route::get("/users/current", [UserController::class, "current"])->middleware(["auth"]);
 Route::get("api/users/current", [UserController::class, "current"])

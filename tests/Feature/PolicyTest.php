@@ -28,4 +28,19 @@ class PolicyTest extends TestCase
         
     
     }
+
+    public function testAuthorizable() {
+        $this->seed([UserSeeder::class, TodoSeeder::class]);
+        $user = User::where("email", "adi@localhost.com")->first();
+        Auth::login($user);
+
+        $todo = Todo::first();
+        
+        self::assertTrue($user->can("view", $todo));
+        self::assertTrue($user->can("delete", $todo));
+        self::assertTrue($user->can("update", $todo));
+        self::assertTrue($user->can("create", Todo::class));
+        
+    
+    }
 }
