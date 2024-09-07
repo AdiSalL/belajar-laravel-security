@@ -49,4 +49,8 @@ class User extends Authenticatable
     public function contacts():HasMany {
         return $this->hasMany(Contact::class, "user_id", "id");
     }
+
+    public function todos():HasMany {
+        return $this->hasMany(Todo::class, "user_id", "id");
+    }
 }
