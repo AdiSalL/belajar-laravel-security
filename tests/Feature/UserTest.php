@@ -92,4 +92,6 @@ class UserTest extends TestCase
         ->assertSeeText("Hello Adi");
 
     }
+
+    
 }
